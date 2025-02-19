@@ -1,0 +1,70 @@
+---
+title: "Exploratory & Expository Figures"
+author: "Connor Quiroz"
+date: "2025-02-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# load in data cleaning packages
+library(tidyverse)
+library(ggtext)
+```
+
+```{r data analysis (cleaning + visualization)}
+# read in data
+fish <- read.csv("Assignment 4/siscowet.csv")
+
+# Look at fish variables / variable types
+str(fish)
+
+# Calculate the proportions of fish that were female
+prop_female <- fish %>%
+  filter(sex == "F" | sex == "M") %>%
+  group_by(locID) %>%
+  count(sex) %>%
+  pivot_wider(values_from = n,
+              names_from = sex) %>%
+  summarize(proportion_female = round(`F` / (`F` + M),2))
+
+# Exploratory figure
+fish %>%
+  filter(!is.na(sex)) %>%
+  group_by(locID) %>%
+  ggplot(aes(x = len, y = wgt, color = pnldep)) +
+  geom_point()
+
+# Expository figure
+fish %>%
+  filter(!is.na(sex)) %>%
+  group_by(locID) %>%
+  ggplot(aes(x = len, y = log(wgt), color = pnldep, color = sex)) +
+  geom_point() +
+  theme_light() +
+  scale_color_viridis_c() +
+  facet_wrap(~ locID) +
+  geom_text(data = prop_female, aes(x = max(fish$len, na.rm = TRUE), 
+                                    y = max(log(fish$wgt), na.rm = TRUE), 
+                                    label = paste("Prop female: ", proportion_female)),
+                                    hjust = 1.1, 
+                                    vjust = 1.1, 
+                                    inherit.aes = FALSE) +
+  labs(x = "Fish length (mm)", 
+       y = "Log transformed\nfish weight (g)", 
+       color = "Gillnet panel depth (m)", 
+       alpha = "Sex", 
+       title = "Fish weight with repsect to fish length, by length, by sampling site") +
+  theme(legend.position="bottom") +
+  theme(
+        plot.title.position = "plot",
+        plot.title=element_text(face="bold"),
+        axis.title.y = element_text(angle = 0, vjust = 0.5,size=14),
+        axis.text = element_text(size=12))
+  
+```
+
+```{r}
+
+```
+
