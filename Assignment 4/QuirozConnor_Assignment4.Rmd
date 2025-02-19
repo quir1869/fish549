@@ -9,12 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 # load in data cleaning packages
 library(tidyverse)
-library(ggtext)
 ```
 
 ```{r data analysis (cleaning + visualization)}
 # read in data
-fish <- read.csv("Assignment 4/siscowet.csv")
+fish <- read.csv("siscowet.csv")
 
 # Look at fish variables / variable types
 str(fish)
@@ -65,6 +64,9 @@ prop_female <- fish %>%
 ```
 
 ```{r}
-ggsave("Assignmentimages/exploratory_figure.png", exploratory_f2igure)
+ggsave("images/exploratory_figure.png", exploratory_figure,
+       width = 8, height = 5, units = "in")
+ggsave("images/expository_figure.png", expository_figure,
+       width = 8, height = 5, units = "in")
 ```
 
