@@ -29,14 +29,14 @@ prop_female <- fish %>%
   summarize(proportion_female = round(`F` / (`F` + M),2))
 
 # Exploratory figure
-fish %>%
+(exploratory_figure <- fish %>%
   filter(!is.na(sex)) %>%
   group_by(locID) %>%
   ggplot(aes(x = len, y = wgt, color = pnldep)) +
-  geom_point()
+  geom_point())
 
 # Expository figure
-fish %>%
+(expository_figure <- fish %>%
   filter(!is.na(sex)) %>%
   group_by(locID) %>%
   ggplot(aes(x = len, y = log(wgt), color = pnldep, color = sex)) +
@@ -60,11 +60,11 @@ fish %>%
         plot.title.position = "plot",
         plot.title=element_text(face="bold"),
         axis.title.y = element_text(angle = 0, vjust = 0.5,size=14),
-        axis.text = element_text(size=12))
+        axis.text = element_text(size=12)))
   
 ```
 
 ```{r}
-
+ggsave("Assignmentimages/exploratory_figure.png", exploratory_f2igure)
 ```
 
