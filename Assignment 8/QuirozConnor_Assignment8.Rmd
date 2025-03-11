@@ -1,0 +1,47 @@
+---
+title: "Course Takeaways"
+subtitle: "FISH 549"
+author: "Connor Quiroz - quir1869@uw.edu"
+date: "2025-03-11"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+## About me | Personal
+
+- Birth place: California, United States
+- Favorite food: Egg / bagel + cheese sandwich
+- Favorite animals: Cats + dolphins
+
+## About me | Adademic
+
+- Undergraduate institution: California State University, Monterey Bay
+
+- Undergraduate major: Environmental Science, Technology, and Policy
+
+## Course topics | 3 things I enjoyed learning about
+
+- Develop version controlled files using git, and sharing my research using github.
+
+- How to produce interactive, shareable content using ioslides, websites, and shiny apps all in the R IDE.
+
+- How to write a manuscript in a .rmd file, which is certainly useful for inputting code-generated values + automatically generating citations.
+
+## Course topics | 3 things I'd like to learn more about
+
+- How can we use AI tools for improved research, outreach, and production/sharing of our code?
+
+- Git terminal usage - is it more efficient than R, or is it a matter of workflow preference?
+
+- Using data portals to upload research data (e.g., Zenodo). Understand how I go about doing that - is it a similar process to pushing to github?
+
+## {data-background=meme.jpg data-background-size="50%"}
+
+
+
+
